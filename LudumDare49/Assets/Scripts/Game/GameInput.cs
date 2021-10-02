@@ -11,9 +11,10 @@ namespace LD49
         public Action onJump;
 
         private InputActions inputActions;
-        private InputAction move;
-        private InputAction look;
-        private InputAction jump;
+        private InputAction moveP1;
+        private InputAction moveP2;
+        private InputAction jumpP1;
+        private InputAction jumpP2;
 
         private void Awake()
         {
@@ -27,26 +28,26 @@ namespace LD49
 
         private void OnEnable()
         {
-            move = inputActions.Player.Move;
-            move.Enable();
-            look = inputActions.Player.Look;
-            look.Enable();
-            jump = inputActions.Player.Jump;
-            jump.Enable();
-            jump.performed += OnJump;
+            moveP1 = inputActions.Player.MoveP1;
+            moveP1.Enable();
+            moveP2 = inputActions.Player.MoveP2;
+            moveP2.Enable();
+            jumpP1 = inputActions.Player.JumpP1;
+            jumpP1.Enable();
+            jumpP1.performed += OnJump;
         }
 
         private void OnDisable()
         {
-            move.Disable();
-            look.Disable();
-            jump.performed -= OnJump;
-            jump.Disable();
+            moveP1.Disable();
+            moveP2.Disable();
+            jumpP1.performed -= OnJump;
+            jumpP1.Disable();
         }
 
         public Vector2 GetMove()
         {
-            return move.ReadValue<Vector2>();
+            return moveP1.ReadValue<Vector2>();
         }
 
         public float GetMoveX()
@@ -61,7 +62,7 @@ namespace LD49
 
         public Vector2 GetLook()
         {
-            return look.ReadValue<Vector2>();
+            return moveP2.ReadValue<Vector2>();
         }
 
         private void OnJump(InputAction.CallbackContext ctx)
@@ -71,7 +72,7 @@ namespace LD49
 
         public bool GetJump()
         {
-            return jump.ReadValue<float>() == 1f; 
+            return jumpP1.ReadValue<float>() == 1f; 
         }
 
         public void OnJump(InputValue value)

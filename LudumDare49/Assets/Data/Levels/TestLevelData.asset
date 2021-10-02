@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66c271f7e46b0a848b6fc86defa87b2d, type: 3}
-  m_Name: LevelData02
+  m_Name: TestLevelData
   m_EditorClassIdentifier: 
-  id: 2
-  blocksAmount: 6
+  id: 1
+  blocksAmount: 2
   blocksPool:
-  - {fileID: 2529574365418503795, guid: 279ef56e7bd5f984b9aec0665584056f, type: 3}
-  - {fileID: 2529574365418503795, guid: 4f2e64001d445ed4ba3959d0e26ff91e, type: 3}
-  - {fileID: 2529574365418503795, guid: 3b06920686dc7734891061728531a0dc, type: 3}
+  - {fileID: 2529574365418503795, guid: 8068e29c77343de4490b25a868f99ba5, type: 3}

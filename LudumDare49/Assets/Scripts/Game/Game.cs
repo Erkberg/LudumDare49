@@ -11,6 +11,7 @@ namespace LD49
 
         public GameInput input;
         public PlayerController player;
+        public Firewall firewall;
 
         private void Awake()
         {
@@ -25,6 +26,7 @@ namespace LD49
         public void OnLevelEnd(int id)
         {
             Debug.Log("reached end of level " + id);
+            firewall.OnLevelEndReached();
         }
     }
 }
