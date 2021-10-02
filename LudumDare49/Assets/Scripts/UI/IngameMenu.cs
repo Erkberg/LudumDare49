@@ -30,6 +30,11 @@ namespace LD49
             return holder.activeSelf;
         }
 
+        public void OnContinueButton()
+        {
+            Close();
+        }
+
         public void OnRestartFromStartButton()
         {
             Close();
