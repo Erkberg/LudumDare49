@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LevelData03
   m_EditorClassIdentifier: 
   id: 3
-  blocksAmount: 6
+  blocksAmount: 5
   blocksPool:
   - {fileID: 2529574365418503795, guid: f1271b60b156d594bac0f7dda3856dc0, type: 3}
   - {fileID: 2529574365418503795, guid: 8068e29c77343de4490b25a868f99ba5, type: 3}
+  - {fileID: 2529574365418503795, guid: 2d763a3a734d32042bb4999b32556af3, type: 3}

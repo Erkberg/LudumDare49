@@ -41,3 +41,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3418839827
+    locked: 0
+  - name: Trees
+    uniqueID: 888876187
+    locked: 0
+  - name: Branches
+    uniqueID: 3845888655
+    locked: 0
+  - name: Player
+    uniqueID: 2259651395
+    locked: 0
+  - name: Fires
+    uniqueID: 4081153515
+    locked: 0
+  - name: Foreground
+    uniqueID: 2610290705
+    locked: 0
+  - name: UI
+    uniqueID: 1103691225
+    locked: 0

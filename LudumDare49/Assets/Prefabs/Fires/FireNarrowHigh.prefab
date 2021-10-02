@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6666949451472899765}
   - component: {fileID: 3482019619677224967}
-  - component: {fileID: 5213456727987948670}
+  - component: {fileID: 8102831098244152490}
   m_Layer: 0
-  m_Name: FireWideLow
+  m_Name: FireNarrowHigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4016987202986628188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 6305040002811634046}
   m_Father: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6250fec7494d14bb6220ac9597b58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &5213456727987948670
+--- !u!70 &8102831098244152490
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +60,7 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
-  m_Direction: 1
+  m_Direction: 0
 --- !u!1 &5986080021976345357
 GameObject:
   m_ObjectHideFlags: 0
