@@ -8,22 +8,58 @@ namespace LD49
     public class Level : MonoBehaviour
     {
         public LevelEnd levelEndPrefab;
-        public List<LevelBlock> blocks;
+        public List<LevelBlock> spawnedBlocks;
 
         public void InitFromData(LevelData data)
         {
-            blocks = new List<LevelBlock>();
-            List<LevelBlock> blocksPool = data.blocks;
+            spawnedBlocks = new List<LevelBlock>();
             float currentWidth = 0f;
 
             for (int i = 0; i < data.blocksAmount; i++)
             {
-                int blockId = Random.Range(0, blocksPool.Count);
-                LevelBlock block = Instantiate(blocksPool[blockId], transform);
+                int blockIdPool = TryGetUnusedBlockId(data);
+                LevelBlock block = Instantiate(data.blocksPool[blockIdPool], transform);
                 block.SetPositionX(currentWidth);
                 currentWidth += block.GetWidth();
-                blocks.Add(block);
+                spawnedBlocks.Add(block);
             }
+        }
+
+        private int TryGetUnusedBlockId(LevelData data)
+        {
+            int counter = 0;
+
+            while(true)
+            {
+                int blockIdPool = Random.Range(0, data.blocksPool.Count);
+                if(HasBlockIdAlreadyBeenSpawned(data.blocksPool[blockIdPool].id))
+                {
+                    counter++;
+                    if(counter > 16)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    return blockIdPool;
+                }
+            }
+
+            return Random.Range(0, data.blocksPool.Count);
+        }
+
+        private bool HasBlockIdAlreadyBeenSpawned(int id)
+        {
+            foreach (LevelBlock spawnedBlock in spawnedBlocks)
+            {
+                if (id == spawnedBlock.id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void SetPositionX(float x)
@@ -35,7 +71,7 @@ namespace LD49
         {
             float width = 0f;
 
-            foreach(LevelBlock block in blocks)
+            foreach(LevelBlock block in spawnedBlocks)
             {
                 width += block.GetWidth();
             }

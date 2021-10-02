@@ -7,6 +7,7 @@ namespace LD49
 {
     public class LevelBlock : MonoBehaviour
     {
+        public int id;
         public LevelBlockGround ground;
 
         public void SetPositionX(float x)

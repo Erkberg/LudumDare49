@@ -8,6 +8,6 @@ namespace LD49
     public class LevelData : ScriptableObject
     {
         public int blocksAmount = 1;
-        public List<LevelBlock> blocks;
+        public List<LevelBlock> blocksPool;
     }
 }
