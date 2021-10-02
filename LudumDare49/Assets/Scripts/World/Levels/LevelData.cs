@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace LD49
 {
-    public class LevelData : MonoBehaviour
+    [CreateAssetMenu]
+    public class LevelData : ScriptableObject
     {
+        public int blocksAmount = 1;
         public List<LevelBlock> blocks;
     }
 }
