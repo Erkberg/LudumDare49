@@ -15,5 +15,10 @@ namespace LD49
             P1,
             P2
         }
+
+        public void Die()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

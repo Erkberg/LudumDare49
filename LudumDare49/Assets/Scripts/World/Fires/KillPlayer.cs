@@ -11,7 +11,7 @@ namespace LD49
             PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
             if (playerMovement)
             {
-                Game.inst.RestartGame();
+                Game.inst.OnPlayerDeath(playerMovement.playerController);
             }
         }
     }

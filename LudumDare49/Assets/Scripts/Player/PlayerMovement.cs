@@ -87,10 +87,10 @@ namespace LD49
 
                 if(distance >= playerController.maxPlayerDistanceX)
                 {
-                    if((playerController.player == PlayerController.Player.P1 & dir < 0f && p1x < p2x) ||
-                        (playerController.player == PlayerController.Player.P1 & dir > 0f && p1x > p2x) ||
-                        (playerController.player == PlayerController.Player.P2 & dir < 0f && p2x < p1x) ||
-                        (playerController.player == PlayerController.Player.P2 & dir > 0f && p2x > p1x))
+                    if((playerController.player == PlayerController.Player.P1 & dir < 0f && p1x < p2x && Game.inst.P2Alive()) ||
+                        (playerController.player == PlayerController.Player.P1 & dir > 0f && p1x > p2x && Game.inst.P2Alive()) ||
+                        (playerController.player == PlayerController.Player.P2 & dir < 0f && p2x < p1x && Game.inst.P1Alive()) ||
+                        (playerController.player == PlayerController.Player.P2 & dir > 0f && p2x > p1x && Game.inst.P1Alive()))
                     {
                         return false;
                     }

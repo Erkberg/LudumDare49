@@ -46,7 +46,38 @@ namespace LD49
             return posi;
         }
 
-        public void RestartGame()
+        public void OnPlayerDeath(PlayerController player)
+        {
+            if (!activeP2)
+                Restart();
+
+            player.Die();
+
+            if (BothPlayersDead())
+                Restart();
+        }
+
+        public bool BothPlayersAlive()
+        {
+            return P1Alive() && P2Alive();
+        }
+
+        public bool BothPlayersDead()
+        {
+            return !P1Alive() && !P2Alive();
+        }
+
+        public bool P1Alive()
+        {
+            return player1.gameObject.activeSelf;
+        }
+
+        public bool P2Alive()
+        {
+            return activeP2 && player2.gameObject.activeSelf;
+        }
+
+        private void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

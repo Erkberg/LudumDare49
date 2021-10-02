@@ -11,10 +11,12 @@ namespace LD49
             Vector3 playerPosition1 = Game.inst.player1.transform.position;
             Vector3 playerPosition2 = Game.inst.player2.transform.position;
 
-            if (Game.inst.activeP2)
+            if (Game.inst.BothPlayersAlive())
                 transform.position = (playerPosition1 + playerPosition2) / 2;
-            else
+            else if(Game.inst.P1Alive())
                 transform.position = playerPosition1;
+            else if (Game.inst.P2Alive())
+                transform.position = playerPosition2;
         }
     }
 }
