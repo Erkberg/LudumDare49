@@ -13,6 +13,7 @@ namespace LD49
         public PlayerController player1;
         public PlayerController player2;
         public Firewall firewall;
+        public Levels levels;
         [Space]
         public bool activeP2 = true;
         public int startLevel = 0;
@@ -23,6 +24,26 @@ namespace LD49
 
             if (!activeP2)
                 player2.gameObject.SetActive(false);
+        }
+
+        private void Start()
+        {
+            Vector3 startPosi = GetStartingPosition();
+            player1.transform.position = startPosi;
+            player2.transform.position = startPosi;
+        }
+
+        private Vector3 GetStartingPosition()
+        {
+            Vector3 posi = new Vector3(0f, -1.5f, 0f);
+
+            if(startLevel > 0)
+            {
+                Level currentLevel = levels.GetLevel(startLevel);
+                posi = currentLevel.levelEnd.transform.position;
+            }
+
+            return posi;
         }
 
         public void RestartGame()

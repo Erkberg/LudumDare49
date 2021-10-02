@@ -12,7 +12,7 @@ namespace LD49
 
         private float currentWidth = 0f;
 
-        private void Start()
+        private void Awake()
         {
             CreateLevels();
         }
@@ -32,6 +32,11 @@ namespace LD49
             level.SetPositionX(currentWidth);
             currentWidth += level.GetWidth();
             levels.Add(level);
+        }
+
+        public Level GetLevel(int id)
+        {
+            return levels.Find(x => x.id == id);
         }
     }
 }

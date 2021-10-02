@@ -7,13 +7,17 @@ namespace LD49
 {
     public class Level : MonoBehaviour
     {
+        public int id;
         public LevelEnd levelEndPrefab;
+        public LevelEnd levelEnd;
         public List<LevelBlock> spawnedBlocks;
 
         public void InitFromData(LevelData data)
         {
+            id = data.id;
             spawnedBlocks = new List<LevelBlock>();
             float currentWidth = 0f;
+            float lastBlockWidth = 0f;
 
             for (int i = 0; i < data.blocksAmount; i++)
             {
@@ -22,10 +26,11 @@ namespace LD49
                 block.SetPositionX(currentWidth);
                 currentWidth += block.GetWidth();
                 spawnedBlocks.Add(block);
+                lastBlockWidth = block.GetWidth();
             }
 
-            LevelEnd levelEnd = Instantiate(levelEndPrefab, transform);
-            levelEnd.SetPositionX(currentWidth);
+            levelEnd = Instantiate(levelEndPrefab, transform);
+            levelEnd.SetPositionX(currentWidth - lastBlockWidth / 2);
             levelEnd.id = data.id;
 
             gameObject.name += $"_{data.id}";            

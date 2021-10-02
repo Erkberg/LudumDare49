@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7488690355480632794, guid: bd78f61393a4dc24dac47efb75921e3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7488690355480632794, guid: bd78f61393a4dc24dac47efb75921e3c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -611,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &782462191
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,6 +1116,7 @@ MonoBehaviour:
   player1: {fileID: 763986735}
   player2: {fileID: 555069641}
   firewall: {fileID: 782462193}
+  levels: {fileID: 52288300}
   activeP2: 1
   startLevel: 0
 --- !u!4 &1864885245

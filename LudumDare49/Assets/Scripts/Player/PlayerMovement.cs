@@ -94,10 +94,6 @@ namespace LD49
                     {
                         return false;
                     }
-                    else
-                    {
-
-                    }
                 }
 
                 return true;
