@@ -11,12 +11,17 @@ namespace LD49
         public void Open()
         {
             holder.SetActive(true);
+            Game.inst.player1.ShowTutorial();
+            if(Game.inst.activeP2)
+                Game.inst.player2.ShowTutorial();
             Time.timeScale = 0f;
         }
 
         public void Close()
         {
             holder.SetActive(false);
+            Game.inst.player1.HideTutorial();
+            Game.inst.player2.HideTutorial();
             Time.timeScale = 1f;
         }
 

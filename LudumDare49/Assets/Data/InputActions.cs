@@ -73,6 +73,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cheat"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a1598a5-594c-46c7-8a1e-e115bfd87dd7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -102,6 +110,39 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""name"": ""positive"",
                     ""id"": ""8c7808e5-2f80-4848-92de-5f06fb4749ba"",
                     ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""D-Pad Horizontal"",
+                    ""id"": ""f07b171d-dc89-462a-be48-1f8985580d5f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveP1"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bdfbdaf8-cf65-4899-86ed-300ac0f9204d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""0284ed64-dea8-487b-9996-d106a7f516b7"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -381,6 +422,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fccd452-5281-464d-b6cc-0b63fd3319ff"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -965,6 +1017,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player_RunP1 = m_Player.FindAction("RunP1", throwIfNotFound: true);
         m_Player_RunP2 = m_Player.FindAction("RunP2", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_Cheat = m_Player.FindAction("Cheat", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1033,6 +1086,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_RunP1;
     private readonly InputAction m_Player_RunP2;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_Cheat;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -1044,6 +1098,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @RunP1 => m_Wrapper.m_Player_RunP1;
         public InputAction @RunP2 => m_Wrapper.m_Player_RunP2;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @Cheat => m_Wrapper.m_Player_Cheat;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1074,6 +1129,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Cheat.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
+                @Cheat.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
+                @Cheat.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1099,6 +1157,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Cheat.started += instance.OnCheat;
+                @Cheat.performed += instance.OnCheat;
+                @Cheat.canceled += instance.OnCheat;
             }
         }
     }
@@ -1262,6 +1323,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnRunP1(InputAction.CallbackContext context);
         void OnRunP2(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnCheat(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

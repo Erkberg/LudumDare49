@@ -19,6 +19,7 @@ namespace LD49
         private InputAction runP1;
         private InputAction runP2;
         private InputAction menu;
+        private InputAction cheat;
 
         private void Awake()
         {
@@ -49,6 +50,10 @@ namespace LD49
             menu = inputActions.Player.Menu;
             menu.Enable();
             menu.performed += OnMenuButton;
+            cheat = inputActions.Player.Cheat;
+            cheat.Enable();
+            cheat.performed += OnCheatDown;
+            cheat.canceled += OnCheatUp;
         }
 
         private void OnDisable()
@@ -63,6 +68,9 @@ namespace LD49
             runP2.Disable();
             menu.performed -= OnMenuButton;
             menu.Disable();
+            cheat.performed -= OnCheatDown;
+            cheat.canceled -= OnCheatUp;
+            cheat.Disable();
         }
 
         public float GetMoveXP1()
@@ -108,6 +116,20 @@ namespace LD49
         private void OnMenuButton(InputAction.CallbackContext ctx)
         {
             Game.inst.ui.OnMenuButton();
+        }
+
+        private void OnCheatDown(InputAction.CallbackContext ctx)
+        {
+#if UNITY_EDITOR
+            Time.timeScale = 4f;
+#endif
+        }
+
+        private void OnCheatUp(InputAction.CallbackContext ctx)
+        {
+#if UNITY_EDITOR
+            Time.timeScale = 1f;
+#endif
         }
     }
 }

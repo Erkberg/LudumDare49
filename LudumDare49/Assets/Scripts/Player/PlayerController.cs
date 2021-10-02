@@ -9,6 +9,7 @@ namespace LD49
         public Player player;
         public PlayerMovement playerMovement;
         public float maxPlayerDistanceX = 14f;
+        public GameObject tutorial;
 
         public enum Player
         {
@@ -19,6 +20,16 @@ namespace LD49
         public void Die()
         {
             gameObject.SetActive(false);
+        }
+
+        public void ShowTutorial()
+        {
+            tutorial.SetActive(true);
+        }
+
+        public void HideTutorial()
+        {
+            tutorial.SetActive(false);
         }
     }
 }

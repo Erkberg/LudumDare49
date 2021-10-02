@@ -37,8 +37,11 @@ namespace LD49
 
         private void Update()
         {
-            MoveHorizontal();
-            MoveVertical();
+            if(movementEnabled)
+            {
+                MoveHorizontal();
+                MoveVertical();
+            }
         }
 
         private bool IsP1()
@@ -129,7 +132,7 @@ namespace LD49
 
         private void OnJump()
         {
-            if (groundChecker.isGrounded)
+            if (groundChecker.isGrounded && movementEnabled)
             {
                 rb2D.SetVelocityY(jumpStrength);
             }
