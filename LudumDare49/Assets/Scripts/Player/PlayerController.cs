@@ -8,6 +8,7 @@ namespace LD49
     {
         public Player player;
         public PlayerMovement playerMovement;
+        public float maxPlayerDistanceX = 14f;
 
         public enum Player
         {

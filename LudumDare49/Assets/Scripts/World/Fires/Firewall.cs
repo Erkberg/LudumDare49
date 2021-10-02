@@ -24,7 +24,7 @@ namespace LD49
 
         private void CheckCatchupToPlayer()
         {
-            float playerX = Game.inst.player.transform.position.x;
+            float playerX = Game.inst.player1.transform.position.x;
             if (transform.position.x + maxDistanceToPlayer < playerX)
             {
                 transform.SetPositionX(playerX - maxDistanceToPlayer);

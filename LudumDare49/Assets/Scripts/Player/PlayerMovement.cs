@@ -70,7 +70,42 @@ namespace LD49
 
             movement *= moveSpeed;
 
+            if (!CanMoveInDirection(movement))
+                movement = 0f;
+
             return movement;
+        }
+
+        private bool CanMoveInDirection(float dir)
+        {
+            if(Game.inst.activeP2)
+            {
+                float p1x = Game.inst.player1.transform.position.x;
+                float p2x = Game.inst.player2.transform.position.x;
+                float distance = p1x - p2x;
+                distance = Mathf.Abs(distance);
+
+                if(distance >= playerController.maxPlayerDistanceX)
+                {
+                    if((playerController.player == PlayerController.Player.P1 & dir < 0f && p1x < p2x) ||
+                        (playerController.player == PlayerController.Player.P1 & dir > 0f && p1x > p2x) ||
+                        (playerController.player == PlayerController.Player.P2 & dir < 0f && p2x < p1x) ||
+                        (playerController.player == PlayerController.Player.P2 & dir > 0f && p2x > p1x))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return true;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void MoveVertical()

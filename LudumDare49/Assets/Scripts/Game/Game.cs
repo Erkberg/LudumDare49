@@ -10,12 +10,19 @@ namespace LD49
         public static Game inst;
 
         public GameInput input;
-        public PlayerController player;
+        public PlayerController player1;
+        public PlayerController player2;
         public Firewall firewall;
+        [Space]
+        public bool activeP2 = true;
+        public int startLevel = 0;
 
         private void Awake()
         {
             inst = this;
+
+            if (!activeP2)
+                player2.gameObject.SetActive(false);
         }
 
         public void RestartGame()
