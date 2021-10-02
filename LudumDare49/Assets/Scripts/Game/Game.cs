@@ -89,6 +89,11 @@ namespace LD49
             firewall.OnLevelEndReached();
         }
 
+        public void OnGameEnd(PlayerController playerController)
+        {
+            Debug.Log("game end!");
+        }
+
         public void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

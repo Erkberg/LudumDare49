@@ -23,14 +23,14 @@ namespace LD49
             {
                 int blockIdPool = TryGetUnusedBlockId(data);
                 LevelBlock block = Instantiate(data.blocksPool[blockIdPool], transform);
-                block.SetPositionX(currentWidth);
+                block.SetPositionX(currentWidth + block.GetWidth() / 2);
                 currentWidth += block.GetWidth();
                 spawnedBlocks.Add(block);
                 lastBlockWidth = block.GetWidth();
             }
 
             levelEnd = Instantiate(levelEndPrefab, transform);
-            levelEnd.SetPositionX(currentWidth - lastBlockWidth / 2);
+            levelEnd.SetPositionX(currentWidth);
             levelEnd.id = data.id;
 
             gameObject.name += $"_{data.id}";            
