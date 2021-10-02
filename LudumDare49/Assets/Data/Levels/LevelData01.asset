@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c271f7e46b0a848b6fc86defa87b2d, type: 3}
   m_Name: LevelData01
   m_EditorClassIdentifier: 
+  id: 1
   blocksAmount: 2
   blocksPool:
   - {fileID: 2529574365418503795, guid: 444216b482f616e4481a4b3a29d0511b, type: 3}

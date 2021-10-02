@@ -22,9 +22,9 @@ namespace LD49
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void OnLevelEnd()
+        public void OnLevelEnd(int id)
         {
-
+            Debug.Log("reached end of level " + id);
         }
     }
 }

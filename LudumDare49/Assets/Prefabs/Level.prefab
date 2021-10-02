@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f06cb602d66de41aed26d889ccaa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks: []
+  levelEndPrefab: {fileID: 4461859664120788116, guid: 4d6bfcf5ad343a94d86be7190d3af519, type: 3}
+  spawnedBlocks: []

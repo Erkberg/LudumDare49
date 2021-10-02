@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1401786637122331023}
   - component: {fileID: 2529574365418503795}
   m_Layer: 0
-  m_Name: LevelBlock02_OneGroundFire
+  m_Name: LevelBlock02_OneNarrowLowGroundFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -23,6 +23,12 @@ namespace LD49
                 currentWidth += block.GetWidth();
                 spawnedBlocks.Add(block);
             }
+
+            LevelEnd levelEnd = Instantiate(levelEndPrefab, transform);
+            levelEnd.SetPositionX(currentWidth);
+            levelEnd.id = data.id;
+
+            gameObject.name += $"_{data.id}";            
         }
 
         private int TryGetUnusedBlockId(LevelData data)
