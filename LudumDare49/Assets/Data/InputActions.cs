@@ -65,6 +65,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8e991b8-1780-4874-b7d2-301ed4119328"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -351,6 +359,28 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""RunP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07f5483a-5842-4222-9409-462832fa3499"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eabeb3de-29ac-48b8-8813-b66caa9d73cc"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -934,6 +964,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player_JumpP2 = m_Player.FindAction("JumpP2", throwIfNotFound: true);
         m_Player_RunP1 = m_Player.FindAction("RunP1", throwIfNotFound: true);
         m_Player_RunP2 = m_Player.FindAction("RunP2", throwIfNotFound: true);
+        m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1001,6 +1032,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_JumpP2;
     private readonly InputAction m_Player_RunP1;
     private readonly InputAction m_Player_RunP2;
+    private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -1011,6 +1043,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @JumpP2 => m_Wrapper.m_Player_JumpP2;
         public InputAction @RunP1 => m_Wrapper.m_Player_RunP1;
         public InputAction @RunP2 => m_Wrapper.m_Player_RunP2;
+        public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1038,6 +1071,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @RunP2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunP2;
                 @RunP2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunP2;
                 @RunP2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunP2;
+                @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1060,6 +1096,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @RunP2.started += instance.OnRunP2;
                 @RunP2.performed += instance.OnRunP2;
                 @RunP2.canceled += instance.OnRunP2;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -1222,6 +1261,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnJumpP2(InputAction.CallbackContext context);
         void OnRunP1(InputAction.CallbackContext context);
         void OnRunP2(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

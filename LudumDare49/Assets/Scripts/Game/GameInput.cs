@@ -18,6 +18,7 @@ namespace LD49
         private InputAction jumpP2;
         private InputAction runP1;
         private InputAction runP2;
+        private InputAction menu;
 
         private void Awake()
         {
@@ -45,6 +46,9 @@ namespace LD49
             runP1.Enable();
             runP2 = inputActions.Player.RunP2;
             runP2.Enable();
+            menu = inputActions.Player.Menu;
+            menu.Enable();
+            menu.performed += OnMenuButton;
         }
 
         private void OnDisable()
@@ -57,6 +61,8 @@ namespace LD49
             jumpP2.Disable();
             runP1.Disable();
             runP2.Disable();
+            menu.performed -= OnMenuButton;
+            menu.Disable();
         }
 
         public float GetMoveXP1()
@@ -97,6 +103,11 @@ namespace LD49
         public bool GetRunP2()
         {
             return runP2.ReadValue<float>() == 1f;
+        }
+
+        private void OnMenuButton(InputAction.CallbackContext ctx)
+        {
+            Game.inst.ui.OnMenuButton();
         }
     }
 }

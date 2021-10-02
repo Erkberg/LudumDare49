@@ -8,8 +8,10 @@ namespace LD49
     public class Game : MonoBehaviour
     {
         public static Game inst;
+        public static int levelReached = 0;
 
         public GameInput input;
+        public GameUI ui;
         public PlayerController player1;
         public PlayerController player2;
         public Firewall firewall;
@@ -24,6 +26,9 @@ namespace LD49
 
             if (!activeP2)
                 player2.gameObject.SetActive(false);
+
+            if (startLevel != 0 && levelReached == 0)
+                levelReached = startLevel;
         }
 
         private void Start()
@@ -37,9 +42,9 @@ namespace LD49
         {
             Vector3 posi = new Vector3(0f, -1.5f, 0f);
 
-            if(startLevel > 0)
+            if(levelReached > 0)
             {
-                Level currentLevel = levels.GetLevel(startLevel);
+                Level currentLevel = levels.GetLevel(levelReached);
                 posi = currentLevel.levelEnd.transform.position;
             }
 
@@ -77,15 +82,22 @@ namespace LD49
             return activeP2 && player2.gameObject.activeSelf;
         }
 
-        private void Restart()
+        public void OnLevelEnd(int id)
+        {
+            Debug.Log("reached end of level " + id);
+            levelReached = id;
+            firewall.OnLevelEndReached();
+        }
+
+        public void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void OnLevelEnd(int id)
+        public void Reset()
         {
-            Debug.Log("reached end of level " + id);
-            firewall.OnLevelEndReached();
+            // reset static variables
+            levelReached = 0;
         }
     }
 }
