@@ -10,10 +10,11 @@ namespace LD49
         public int id;
         public LevelBlockGround ground;
         public LevelBackground backgroundPrefab;
+        private LevelBackground bg;
 
         public void SpawnBackground()
         {
-            LevelBackground bg = Instantiate(backgroundPrefab, transform);
+            bg = Instantiate(backgroundPrefab, transform);
             bg.SpawnTrees();
         }
 
@@ -25,6 +26,11 @@ namespace LD49
         public float GetWidth()
         {
             return ground.GetWidth();
+        }
+
+        public void AdjustFireToLevel()
+        {
+            bg.AdjustFireToLevel();
         }
     }
 }

@@ -17,6 +17,11 @@ namespace LD49
             CreateLevels();
         }
 
+        private void Start()
+        {
+            AdjustFiresToLevel();
+        }
+
         private void CreateLevels()
         {
             foreach(LevelData levelData in levelDatas)
@@ -37,6 +42,14 @@ namespace LD49
         public Level GetLevel(int id)
         {
             return levels.Find(x => x.id == id);
+        }
+
+        public void AdjustFiresToLevel()
+        {
+            foreach(Level level in levels)
+            {
+                level.AdjustFiresToLevel();
+            }
         }
     }
 }

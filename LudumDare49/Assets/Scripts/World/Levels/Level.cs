@@ -90,5 +90,13 @@ namespace LD49
 
             return width;
         }
+
+        public void AdjustFiresToLevel()
+        {
+            foreach (LevelBlock levelBlock in spawnedBlocks)
+            {
+                levelBlock.AdjustFireToLevel();
+            }
+        }
     }
 }

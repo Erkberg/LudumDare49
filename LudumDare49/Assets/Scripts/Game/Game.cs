@@ -124,6 +124,7 @@ namespace LD49
             firewall.maxDistanceToPlayer = 16f;
             levelReached = id;
             firewall.OnLevelEndReached();
+            levels.AdjustFiresToLevel();
         }
 
         public void OnP2Freed()
