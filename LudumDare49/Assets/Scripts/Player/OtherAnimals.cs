@@ -10,6 +10,7 @@ namespace LD49
 
         public void Die()
         {
+            Game.inst.audio.PlayBurnSound();
             animator.SetTrigger("die");
         }
     }

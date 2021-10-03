@@ -12,6 +12,7 @@ namespace LD49
 
         public State state = State.Cutscene;
 
+        public new GameAudio audio;
         public GameInput input;
         public GameUI ui;
         public GameCutscenes cutscenes;

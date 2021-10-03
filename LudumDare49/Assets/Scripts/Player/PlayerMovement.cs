@@ -42,6 +42,9 @@ namespace LD49
             {
                 MoveHorizontal();
                 MoveVertical();
+
+                if(groundChecker.isGrounded && !groundChecker.wasGroundedLastFrame)
+                    Game.inst.audio.PlayLandSound();
             }
         }
 
@@ -146,6 +149,7 @@ namespace LD49
             if (groundChecker.isGrounded && movementEnabled)
             {
                 rb2D.SetVelocityY(jumpStrength);
+                Game.inst.audio.PlayJumpSound();
             }
         }
 

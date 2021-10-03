@@ -25,6 +25,7 @@ namespace LD49
 
         private IEnumerator DieSequence()
         {
+            Game.inst.audio.PlayBurnSound();
             isActive = false;
             playerMovement.Stop();
             playerMovement.playerAnimation.OnDeath();
