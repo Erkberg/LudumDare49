@@ -20,7 +20,7 @@ namespace LD49
             Game.inst.player1.ShowTutorial();
             Game.inst.player1.playerMovement.movementEnabled = true;
             Game.inst.state = Game.State.Gameplay;
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(8f);
             Game.inst.player1.HideTutorial();
         }
 
@@ -28,7 +28,7 @@ namespace LD49
         {
             Game.inst.player2.ShowTutorial();
             Game.inst.player2.playerMovement.movementEnabled = true;
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(8f);
             Game.inst.player2.HideTutorial();
         }
 

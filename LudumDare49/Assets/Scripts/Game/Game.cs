@@ -134,8 +134,12 @@ namespace LD49
 
         public void OnGameEnd(PlayerController playerController)
         {
-            Debug.Log("game end!");
-            StartCoroutine(cutscenes.EndCutscene());
+            if(state == State.Gameplay)
+            {
+                state = State.Cutscene;
+                Debug.Log("game end!");
+                StartCoroutine(cutscenes.EndCutscene());
+            }            
         }
 
         public void Restart()
