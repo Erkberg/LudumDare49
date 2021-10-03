@@ -47,5 +47,10 @@ namespace LD49
             Close();
             Game.inst.Restart();
         }
+
+        public void OnQuitButton()
+        {
+            Application.Quit();
+        }
     }
 }
