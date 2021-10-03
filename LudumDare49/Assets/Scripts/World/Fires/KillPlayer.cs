@@ -13,6 +13,12 @@ namespace LD49
             {
                 Game.inst.OnPlayerDeath(playerMovement.playerController);
             }
+
+            OtherAnimals other = collision.GetComponent<OtherAnimals>();
+            if (other)
+            {
+                other.Die();
+            }
         }
     }
 }

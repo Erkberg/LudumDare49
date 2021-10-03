@@ -11,6 +11,7 @@ namespace LD49
         public PlayerController playerController;
         public Rigidbody2D rb2D;
         public GroundChecker groundChecker;
+        public PlayerAnimation playerAnimation;
 
         public float moveSpeed = 1f;
         public float runMultiplier = 1.5f;
@@ -44,6 +45,11 @@ namespace LD49
             }
         }
 
+        public void Stop()
+        {
+            rb2D.velocity = Vector2.zero;
+        }
+
         private bool IsP1()
         {
             return playerController.player == PlayerController.Player.P1;
@@ -51,7 +57,12 @@ namespace LD49
 
         private void MoveHorizontal()
         {
-            rb2D.SetVelocityX(GetMovementHorizontal());
+            float movement = GetMovementHorizontal();
+            rb2D.SetVelocityX(movement);
+            if (movement > 0f)
+                playerAnimation.SetFlipped(false);
+            else if (movement < 0f)
+                playerAnimation.SetFlipped(true);
         }
 
         private float GetMovementHorizontal()
@@ -141,6 +152,30 @@ namespace LD49
         private void ApplyExtraGravity(float multiplier)
         {
             rb2D.AddVelocityY(Physics2D.gravity.y * (multiplier - 1f) * Time.deltaTime);
+        }
+
+        public bool IsWalking()
+        {
+            return rb2D.velocity.x != 0f;
+        }
+
+        public bool IsRunning()
+        {
+            if (IsP1() && Game.inst.input.GetRunP1())
+            {
+                return true;
+            }
+            else if (!IsP1() && Game.inst.input.GetRunP2())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsJumping()
+        {
+            return !groundChecker.isGrounded;
         }
     }
 }

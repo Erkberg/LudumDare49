@@ -73,13 +73,7 @@ namespace LD49
 
         public void OnPlayerDeath(PlayerController player)
         {
-            if (!activeP2)
-                Restart();
-
             player.Die();
-
-            if (BothPlayersDead())
-                Restart();
         }
 
         public bool BothPlayersAlive()
@@ -94,12 +88,12 @@ namespace LD49
 
         public bool P1Alive()
         {
-            return player1.gameObject.activeSelf;
+            return player1.isActive;
         }
 
         public bool P2Alive()
         {
-            return activeP2 && player2.playerMovement.movementEnabled && player2.gameObject.activeSelf;
+            return activeP2 && player2.playerMovement.movementEnabled && player2.isActive;
         }
 
         public void OnLevelEnd(int id)

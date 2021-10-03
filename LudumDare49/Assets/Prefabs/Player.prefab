@@ -149,7 +149,7 @@ Animator:
   m_GameObject: {fileID: 6420671097124766513}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3bec1a6f26be3ee478d0df5504286a55, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 7488690355480632794}
   - component: {fileID: 7488690355480632793}
   - component: {fileID: 7488690355480632799}
+  - component: {fileID: 8561803039431639278}
   - component: {fileID: 7488690355480632792}
   - component: {fileID: 7488690355480632796}
   - component: {fileID: 7488690355480632795}
@@ -228,12 +229,29 @@ MonoBehaviour:
   playerController: {fileID: 7488690355480632793}
   rb2D: {fileID: 7488690355480632796}
   groundChecker: {fileID: 7488690357020599747}
+  playerAnimation: {fileID: 8561803039431639278}
   moveSpeed: 4
   runMultiplier: 1.5
   jumpStrength: 6
   applyExtraGravity: 1
   fallMultiplier: 3
   lowJumpMultiplier: 2
+--- !u!114 &8561803039431639278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7488690355480632798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62475d7759b8f17478c185ba1f20959f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1205850653912902952}
+  playerMovement: {fileID: 7488690355480632799}
+  scaleX: -0.175
+  offsetX: 0.15
 --- !u!114 &7488690355480632792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,15 +482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c018f49af62fde14f96bd8fa812cd476, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c018f49af62fde14f96bd8fa812cd476, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c018f49af62fde14f96bd8fa812cd476, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c018f49af62fde14f96bd8fa812cd476, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

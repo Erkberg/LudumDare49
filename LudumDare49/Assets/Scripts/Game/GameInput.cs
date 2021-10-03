@@ -121,7 +121,7 @@ namespace LD49
         private void OnCheatDown(InputAction.CallbackContext ctx)
         {
 #if UNITY_EDITOR
-            Time.timeScale = 4f;
+            Time.timeScale = 8f;
 #endif
         }
 

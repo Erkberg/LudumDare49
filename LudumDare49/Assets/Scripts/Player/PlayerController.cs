@@ -6,6 +6,7 @@ namespace LD49
 {
     public class PlayerController : MonoBehaviour
     {
+        public bool isActive = true;
         public Player player;
         public PlayerMovement playerMovement;
         public float maxPlayerDistanceX = 14f;
@@ -19,7 +20,19 @@ namespace LD49
 
         public void Die()
         {
-            gameObject.SetActive(false);
+            StartCoroutine(DieSequence());            
+        }
+
+        private IEnumerator DieSequence()
+        {
+            isActive = false;
+            playerMovement.Stop();
+            playerMovement.playerAnimation.OnDeath();
+            playerMovement.movementEnabled = false;
+            yield return new WaitForSeconds(3f);
+
+            if (!Game.inst.activeP2 || Game.inst.BothPlayersDead())
+                Game.inst.Restart();
         }
 
         public void ShowTutorial()
