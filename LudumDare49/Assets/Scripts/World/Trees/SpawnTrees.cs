@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ErksUnityLibrary;
 
 namespace LD49
 {
@@ -32,6 +33,7 @@ namespace LD49
                 }
                 GameObject tree = Instantiate(treePrefab, transform);
                 tree.transform.localPosition = posi;
+                tree.transform.SetLocalRotationY(Random.Range(-360f, 360f));
                 spawnedTrees.Add(tree.transform);
             }
         }
@@ -39,7 +41,7 @@ namespace LD49
         private Vector3 GetRandomPosition()
         {
             float x = ground.localPosition.x + Random.Range(-ground.localScale.x, ground.localScale.x) / 2.1f;
-            float z = ground.localPosition.z + Random.Range(-ground.localScale.z, ground.localScale.z) / 2.1f;
+            float z = ground.localPosition.z + Random.Range(-ground.localScale.z, ground.localScale.z) / 2.4f;
 
             return new Vector3(x, yPos, z);
         }
