@@ -15,7 +15,7 @@ namespace LD49
             Game.inst.camFollowPoint.state = CamFollowPoint.State.MoveLeft;
             yield return new WaitForSeconds(4f);
             Game.inst.camFollowPoint.state = CamFollowPoint.State.MoveRight;
-            yield return new WaitForSeconds(12f);
+            yield return new WaitForSeconds(12.1f);
             Game.inst.camFollowPoint.state = CamFollowPoint.State.FollowPlayers;
             Game.inst.player1.ShowTutorial();
             Game.inst.player1.playerMovement.movementEnabled = true;
