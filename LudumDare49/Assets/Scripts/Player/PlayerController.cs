@@ -32,7 +32,7 @@ namespace LD49
             playerMovement.movementEnabled = false;
             yield return new WaitForSeconds(3f);
 
-            if (!Game.inst.activeP2 || Game.inst.BothPlayersDead())
+            if (Game.inst.BothPlayersDead())
                 Game.inst.Restart();
         }
 

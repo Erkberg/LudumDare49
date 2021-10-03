@@ -95,7 +95,7 @@ namespace LD49
 
         private bool CanMoveInDirection(float dir)
         {
-            if(Game.inst.activeP2)
+            if(Game.inst.P2Alive())
             {
                 float p1x = Game.inst.player1.transform.position.x;
                 float p2x = Game.inst.player2.transform.position.x;

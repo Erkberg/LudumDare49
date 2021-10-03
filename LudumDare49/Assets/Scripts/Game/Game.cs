@@ -22,7 +22,7 @@ namespace LD49
         public Levels levels;
         public CamFollowPoint camFollowPoint;
         [Space]
-        public bool activeP2 = true;
+        public static bool activeP2 = false;
         public int startLevel = 0;
 
         public enum State
@@ -48,9 +48,13 @@ namespace LD49
             }
             else
             {
+                state = State.Gameplay;
                 Vector3 startPosi = GetStartingPosition();
                 player1.transform.position = startPosi;
-                player2.transform.position = startPosi;
+                if(activeP2)
+                    player2.transform.position = startPosi;
+
+                firewall.transform.position = startPosi + Vector3.left * 20f;
             }            
         }
 
@@ -107,6 +111,7 @@ namespace LD49
 
         public void OnP2Freed()
         {
+            activeP2 = true;
             StartCoroutine(cutscenes.FreeP2Cutscene());
         }
 
@@ -125,6 +130,7 @@ namespace LD49
         {
             // reset static variables
             levelReached = 0;
+            activeP2 = false;
         }
     }
 }

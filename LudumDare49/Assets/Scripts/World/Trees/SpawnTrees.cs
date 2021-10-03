@@ -34,6 +34,7 @@ namespace LD49
                 GameObject tree = Instantiate(treePrefab, transform);
                 tree.transform.localPosition = posi;
                 tree.transform.SetLocalRotationY(Random.Range(-360f, 360f));
+                tree.transform.SetScaleY(Random.Range(0.8f, 1.33f));
                 spawnedTrees.Add(tree.transform);
             }
         }

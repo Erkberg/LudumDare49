@@ -9,10 +9,27 @@ namespace LD49
     {
         public float moveSpeed = 1f;
         public float maxDistanceToPlayer = 16f;
+        public float moveSpeedMultiplier = 1.2f;
+
+        private void Start()
+        {
+            SetSpeedForLevel();
+        }
 
         public void OnLevelEndReached()
         {
-            moveSpeed *= 1.2f;
+            moveSpeed *= moveSpeedMultiplier;
+        }
+
+        public void SetSpeedForLevel()
+        {
+            if(Game.levelReached != 0)
+            {
+                for (int i = 0; i < Game.levelReached; i++)
+                {
+                    moveSpeed *= moveSpeedMultiplier;
+                }
+            }
         }
 
         private void Update()

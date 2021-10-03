@@ -12,7 +12,7 @@ namespace LD49
         {
             holder.SetActive(true);
             Game.inst.player1.ShowTutorial();
-            if(Game.inst.activeP2)
+            if(Game.inst.P2Alive())
                 Game.inst.player2.ShowTutorial();
             Time.timeScale = 0f;
         }
