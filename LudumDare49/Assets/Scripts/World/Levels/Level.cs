@@ -23,6 +23,7 @@ namespace LD49
             {
                 int blockIdPool = TryGetUnusedBlockId(data);
                 LevelBlock block = Instantiate(data.blocksPool[blockIdPool], transform);
+                block.SpawnBackground();
                 block.SetPositionX(currentWidth + block.GetWidth() / 2);
                 currentWidth += block.GetWidth();
                 spawnedBlocks.Add(block);

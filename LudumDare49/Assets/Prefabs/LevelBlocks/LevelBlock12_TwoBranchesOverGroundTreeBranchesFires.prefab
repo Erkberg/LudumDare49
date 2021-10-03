@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 12
   ground: {fileID: 6706642463168354724}
+  backgroundPrefab: {fileID: 840128693075405775, guid: 0acfc791c405813439893cbd8be764bd, type: 3}
 --- !u!1001 &2123192055747828266
 PrefabInstance:
   m_ObjectHideFlags: 0

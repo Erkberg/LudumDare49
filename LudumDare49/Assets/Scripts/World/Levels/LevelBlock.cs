@@ -9,6 +9,13 @@ namespace LD49
     {
         public int id;
         public LevelBlockGround ground;
+        public LevelBackground backgroundPrefab;
+
+        public void SpawnBackground()
+        {
+            LevelBackground bg = Instantiate(backgroundPrefab, transform);
+            bg.SpawnTrees();
+        }
 
         public void SetPositionX(float x)
         {

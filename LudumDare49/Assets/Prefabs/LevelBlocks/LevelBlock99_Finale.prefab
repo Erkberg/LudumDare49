@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 99
   ground: {fileID: 7499592425110369245}
+  backgroundPrefab: {fileID: 840128693075405775, guid: 97e96ca5efa25de43b3fe5f03c468569, type: 3}
 --- !u!1 &8310734053352972436
 GameObject:
   m_ObjectHideFlags: 0
