@@ -7,6 +7,9 @@ namespace LD49
     public class GameUI : MonoBehaviour
     {
         public IngameMenu ingameMenu;
+        public GameObject blackOverlay;
+        public GameObject gameEndText;
+        public GameObject creditsText;
 
         public void OnMenuButton()
         {

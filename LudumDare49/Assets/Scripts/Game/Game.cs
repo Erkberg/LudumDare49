@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,10 @@ namespace LD49
         public Firewall firewall;
         public Levels levels;
         public CamFollowPoint camFollowPoint;
+
+        public CinemachineVirtualCamera endCam;
+        public GameObject endP1;
+        public GameObject endP2;
         [Space]
         public static bool activeP2 = false;
         public int startLevel = 0;
@@ -29,6 +34,13 @@ namespace LD49
         {
             Cutscene,
             Gameplay
+        }
+
+        [ContextMenu("GameEnd")]
+        public void TriggerGameEnd()
+        {
+            StopAllCoroutines();
+            inst.OnGameEnd(null);
         }
 
         private void Awake()
@@ -99,6 +111,11 @@ namespace LD49
         public bool P2Alive()
         {
             return activeP2 && player2.playerMovement.movementEnabled && player2.isActive;
+        }
+
+        public bool P2EndAlive()
+        {
+            return activeP2 && player2.isActive;
         }
 
         public void OnLevelEnd(int id)
